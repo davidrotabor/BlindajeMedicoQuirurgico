@@ -24,7 +24,12 @@ import PetsLogoBlue from '../../Assets/Icons/PetsLogoBlue.png';
 //import PlanComplementarioLogoBlue from '../../Assets/Icons/PlanComplementarioLogoBlue.png'
 import CasaLogoBlue from '../../Assets/Icons/CasaLogoBlue.png';
 import ServicesCardScreen from '../../components/ServicesCardScreen';
-import {BottomSheetModal, BottomSheetModalProvider} from '@gorhom/bottom-sheet';
+import {
+  BottomSheetModal,
+  BottomSheetModalProvider,
+  BottomSheetBackdrop,
+  BottomSheetView,
+} from '@gorhom/bottom-sheet';
 import Profile from '../Profile';
 import {AuthContext} from '../../Context/AuthContext';
 //import axios from 'axios'
@@ -100,7 +105,7 @@ const servicess = [
     id: '3',
     name: 'Soat',
     description: 'Con el Seguro Obligat​orio de Accidentes de Tránsito manejas tranquilo porque sabes que estás...',
-    descriptionL: `Con el Seguro Obligat​orio de Accidentes de Tránsito manejas tranquilo porque sabes que estás cumpliendo la ley y con la responsabilidad de garantizar una prestación para conductores, pa​sajeros o peatones que se vean afectados en caso de sufrir algún accidente. Cuenta con:${"\n"}${"\n"}- Indemnización por muerte y gastos funerarios: Si como producto de un accidente de tránsito llegas a perder la vida, el SOAT garantiza que a tus beneficiarios se les entregan 750 salarios mínimos diarios legales vigentes que incluyen gastos de funeral. Ten en cuenta que esta indemnización solo es posible si el fallecimiento de la víctima se da antes de cumplirse un año del accidente y como consecuencia de este, es decir, si una persona queda en estado de coma, pero muere después de doce meses, esta cobertura ya no sería válida dentro del seguro. Esta indemnización también se les da a los beneficiarios de las personas que vayan contigo o a los peatones que fallezcan por causa del accidente.${"\n"}${"\n"}- Servicios de salud: Si en un accidente tú, las personas que van contigo o un peatón que atropellaste necesitan atención médica, el SOAT les cubre gastos como cirugías, exámenes, terapias, medicamentos y todo lo necesario para su recuperación.${"\n"}${"\n"}- Incapacidad: Si luego de tener un accidente de tránsito, el médico determina alguna pérdida de capacidad laboral, tienes una indemnización de máximo 180 salarios mínimos diarios legales vigentes. Ten en cuenta que si es una incapacidad temporal​, el SOAT no te cubre, sino que debes acudir a tu EPS.${"\n"}${"\n"}- Gastos de transporte: El SOAT te cubre los gastos de transporte de cada una de las personas que se vean afectadas con el accidente, desde el sitio donde ocurra hasta un centro médico. Por cada uno son 10 salarios mínimos diarios legales vigentes.${"\n"}${"\n"}Los beneficiarios pueden contar con una indemnización de 750 salarios mínimos diarios legales vigentes en caso de que tú, tus acompañantes o un peatón mueran como producto de un accidente de tránsito.${"\n"}${"\n"}Se pagan tus servicios de salud, los de las personas que vayan contigo en el momento del accidente o los de un peatón, hasta máximo 800 salarios mínimos diarios legales vigentes.${"\n"}${"\n"}Puedes tener una indemnización hasta 180 salarios mínimos diarios legales vigentes si quedas con discapacidad.${"\n"}${"\n"}Cubre los gastos de transporte desde el sitio del accidente hasta un centro médico por 10 salarios mínimos diarios legales vigentes.`,
+    descriptionL: `Con el Seguro Obligat​orio de Accidentes de Tránsito manejas tranquilo porque sabes que estás cumpliendo la ley y con la responsabilidad de garantizar una prestación para conductores, pa​sajeros o peatones que se vean afectados en caso de sufrir algún accidente. Cuenta con:${"\n"}${"\n"}- Indemnización por muerte y gastos funerarios: Si como producto de un accidente de tránsito llegas a perder la vida, el SOAT garantiza que a tus beneficiarios se les entregan 750 salarios mínimos diarios legales vigentes que incluyen gastos de funeral. Ten en cuenta que esta indemnización solo es posible si el fallecimiento de la víctima se da antes de cumplirse un año del accidente y como consecuencia de este, es decir, si una persona queda en estado de coma, pero muere después de doce meses, esta cobertura ya no sería válida dentro del seguro. Esta indemnización también se les da a los beneficiarios de las personas que vayan contigo o a los peatones que fallezcan por causa del accidente.${"\n"}${"\n"}- Servicios de salud: Si en un accidente tú, las personas que van contigo o un peatón que atropellaste necesitan atención médica, el SOAT les cubre gastos como cirugías, exámenes, terapias, medicamentos y todo lo necesario para su recuperación.${"\n"}${"\n"}- Incapacidad: Si luego de tener un accidente de tránsito, el médico determina alguna pérdida de capacidad laboral, tienes una indemnización de máximo 180 salarios mínimos diarios legales vigentes. Ten en cuenta que si es una incapacidad temporal​, el SOAT no te cubre, sino que debes acudir a tu EPS.${"\n"}${"\n"}- Gastos de transporte: El SOAT te cubre los gastos de transporte de cada una de las personas que se vean afectadas con el accidente, desde el sitio donde ocurra hasta un centro médico. Por cada uno son 10 salarios mínimos diarios legales vigentes.${"\n"}${"\n"}Los beneficiarios pueden contar con una indemnización de 750 salarios mínimos diarios legales vigentes en caso de que tú, tus acompañantes o un peatón mueran como producto de un accidente de tránsito.${"\n"}${"\n"}Se pagan tus servicios de salud, los de las personas que vayan contigo en el momento del accidente o los de un peatón, hasta máximo 800 salarios mínimos diarios legales vigentes.${"\n"}${"\n"}Puedes tener una indemnización hasta 180 salarios mínimos diarios legales vigentes si quedas con discapacidad.${"\n"}${"\n"}Cubre los gastos de transporte desde el sitio del accidente hasta un centro médico por 10 salarios mínimos diarios legales vigentes.`,
     price: '100.000',
     logo: SoatLogo,
     logoDetail: SoatLogoBlue,
@@ -126,7 +131,7 @@ const servicess = [
     name: 'Arrendamiento Digital',
     description:
       'Genera tranquilidad saber que cada mes cuentas con el dinero que te pagan los...',
-    descriptionL: `Genera tranquilidad saber que cada mes cuentas con el dinero que te pagan los inquilinos de tu propiedad, pero cuando no sea así, ¡no te preocupes! Tenemos la solución para que nunca dejes de recibir tus ingresos.​​​​​​​​​​${'\n'}${'\n'}Según la modalidad y el plan que elijas:${'\n'}Coberturas básicas:${'\n'}- Pago del arriendo en caso de incumplimiento de tu inquilino${'\n'}- Pago de cuotas de administración.${'\n'}- Servicios públicos domiciliarios pendientes en la entrega del inmueble${'\n'}${'\n'}Coberturas opcionales:${'\n'}- Daños y faltantes al inventario${'\n'}- Asistencia domiciliaria (servicios de plomería, electricidad, cerrajería, reemplazo de vidrios, gastos de traslado y asistencia jurídica telefónica).${'\n'}${'\n'}En caso de reclamación, la cobertura se mantendrá hasta que se restituya el inmueble o hasta que el inquilino efectúe el pago de sus obligaciones, con un límite máximo de indemnización de 12 meses. El seguro debe estar vigente y a paz y salvo.`,
+    descriptionL: `Genera tranquilidad saber que cada mes cuentas con el dinero que te pagan los inquilinos de tu propiedad, pero cuando no sea así, ¡no te preocupes! Tenemos la solución para que nunca dejes de recibir tus ingresos.​​​​​​​​​​${'\n'}${'\n'}Según la modalidad y el plan que elijas:${'\n'}Coberturas básicas:${'\n'}- Pago del arriendo en caso de incumplimiento de tu inquilino${'\n'}- Pago de cuotas de administración.${'\n'}- Servicios públicos domiciliarios pendientes en la entrega del inmueble${'\n'}${'\n'}Coberturas opcionales:${'\n'}- Daños y faltantes al inventario${'\n'}- Asistencia domiciliaria (servicios de plomería, electricidad, cerrajería, reemplazo de vidrios, gastos de traslado y asistencia jurídica telefónica).${'\n'}${'\n'}En caso de reclamación, la cobertura se mantendrá hasta que se restituya el inmueble o hasta que el inquilino efectúe el pago de sus obligaciones, con un límite máximo de indemnización de 12 meses. El seguro debe estar vigente y a paz y salvo.`,
     price: '250.000',
     logo: ArriendoLogo,
     logoDetail: ArriendoLogoBlue,
@@ -164,7 +169,7 @@ const servicess = [
 const ServicesScreen = () => {
   const Navigation = useNavigation();
   const bottomSheetModalProfileRef = useRef(null);
-  const snapModalPoint = ['100'];
+  const snapModalPoint = ['100%']; // 👈 full screen
   const {shopping} = useContext(AuthContext);
 
   // const [services, setServices] = useState([])
@@ -242,9 +247,22 @@ const ServicesScreen = () => {
         <BottomSheetModal
           ref={bottomSheetModalProfileRef}
           index={0}
-          snapPoints={snapModalPoint}>
-          <Profile />
+          snapPoints={snapModalPoint}
+          enableDynamicSizing={false}
+          enablePanDownToClose
+          backdropComponent={(props) => (
+            <BottomSheetBackdrop
+              {...props}
+              appearsOnIndex={0}
+              disappearsOnIndex={-1}
+            />
+          )}
+        >
+          <BottomSheetView>
+            <Profile />
+          </BottomSheetView>
         </BottomSheetModal>
+
         <View style={styles.servicesScreen_}>
           <FlatList
             data={servicess}

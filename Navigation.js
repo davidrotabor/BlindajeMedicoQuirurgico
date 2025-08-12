@@ -119,7 +119,6 @@ function Tabs() {
             screenOptions={{
                 tabBarActiveTintColor: '#1B7BCC',
                 tabBarInactiveTintColor: 'rgba(27, 123, 204, .3)',
-                unmountOnBlur: true,
                 tabBarLabelStyle: {
                     paddingBottom: 20
                 },
@@ -139,7 +138,7 @@ function Tabs() {
             <Tab.Screen name="Homee" component={StackShoppingCart} options={({ route }) => ({
                 tabBarLabel: 'Inicio',
                 tabBarIcon: ({ color }) => (
-                  <HomeIcon color={color} variant="Linear" size={35} style={{ marginTop: 10 }} />
+                  <HomeIcon color={color} variant="Linear" size={35} style={{ marginTop: 0 }} />
                 ),
                 headerShown: false,
                 tabBarStyle: {
@@ -159,9 +158,9 @@ function Tabs() {
                 tabBarLabel: 'Coberturas',
                 tabBarIcon: ({ focused }) => (
                   focused ? 
-                  <Image source={BlindajeLogo} style={{ width: 35, height: 35, marginTop: 10, opacity: 1 }} />
+                  <Image source={BlindajeLogo} style={{ width: 35, height: 35, marginTop: 0, opacity: 1 }} />
                   :
-                  <Image source={BlindajeLogo} style={{ width: 35, height: 35, marginTop: 10, opacity: .3 }} />
+                  <Image source={BlindajeLogo} style={{ width: 35, height: 35, marginTop: 0, opacity: .3 }} />
                 ),
                 headerShown: false,
                 tabBarStyle: {
@@ -199,7 +198,7 @@ function Tabs() {
             <Tab.Screen name="MyPolicess" component={StackShoppingCartMisP} options={({ route }) => ({
                 tabBarLabel: 'Mis Pólizas',
                 tabBarIcon: ({ color }) => (
-                  <ClipboardText color={color} variant="Linear" size={35} style={{ marginTop: 10 }} />
+                  <ClipboardText color={color} variant="Linear" size={35} style={{ marginTop: 0 }} />
                 ),
                 tabBarStyle: {
                     display: getTabBarVisibility(route),
@@ -218,7 +217,7 @@ function Tabs() {
             <Tab.Screen name="Máss" component={StackShoppingCartMas} options={({ route }) => ({
                 tabBarLabel: 'Más',
                 tabBarIcon: ({ color }) => (
-                  <MoreIcon color={color} variant="Linear" size={35} style={{ marginTop: 10 }} />
+                  <MoreIcon color={color} variant="Linear" size={35} style={{ marginTop: 0 }} />
                 ),
                 tabBarStyle: {
                     display: getTabBarVisibility(route),
